@@ -259,7 +259,8 @@ func (scope *Scope) GetModelStruct() *ModelStruct {
 											// source foreign keys (db names)
 											relationship.ForeignFieldNames = append(relationship.ForeignFieldNames, foreignField.DBName)
 											// join table foreign keys for source
-											joinTableDBName := ToDBName(reflectType.Name()) + "_" + foreignField.DBName
+											// joinTableDBName := ToDBName(reflectType.Name()) + "_" + foreignField.DBName
+											joinTableDBName := foreignField.DBName
 											relationship.ForeignDBNames = append(relationship.ForeignDBNames, joinTableDBName)
 										}
 									}
@@ -276,7 +277,8 @@ func (scope *Scope) GetModelStruct() *ModelStruct {
 											// association foreign keys (db names)
 											relationship.AssociationForeignFieldNames = append(relationship.AssociationForeignFieldNames, field.DBName)
 											// join table foreign keys for association
-											joinTableDBName := ToDBName(elemType.Name()) + "_" + field.DBName
+											// joinTableDBName := ToDBName(elemType.Name()) + "_" + field.DBName
+											joinTableDBName := field.DBName
 											relationship.AssociationForeignDBNames = append(relationship.AssociationForeignDBNames, joinTableDBName)
 										}
 									}
